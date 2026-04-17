@@ -20,7 +20,7 @@ body{
 
 .header {
     height: 50px;
-    background-color: aqua;
+    background-color: #051336;
     flex-direction: row;
     display: flex;
     justify-content: space-around;
