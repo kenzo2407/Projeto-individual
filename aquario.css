@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+body {
+    background-color: darkblue;
+}
+
+.header {
+    height: 50px;
+    background-color: aqua;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+}
+
+.page_container {
+    flex-direction: row;
+    display: flex;
+    background-color: cornflowerblue;
+    width: 250px;
+    height: 100px;
+    border-radius: 10px;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sim{
+    display: flex;
+    gap: 50px;
+}
+
+.picanha{
+
+display: flex;
+left: 200px;
+
+}
+.teste{
+    width: 50px;
+    height: 50px;
+    background-color: darkgoldenrod;
+    display: flex;
+    border-radius: 10px;
+    justify-content: center;
+    gap: 1000px;
+}
+
+.pamonha{
+    width: 200px;
+    height: 200px;
+    background-color: aquamarine;
+    display: flex;
+    left: 130px ;
+    position: relative;
+    flex: 1;
+
+}
