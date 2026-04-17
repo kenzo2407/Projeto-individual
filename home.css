@@ -6,8 +6,13 @@
 }
 
 
-body {
-    background-color: darkblue;
+.img {
+    background-image: url(https://www.bondi38.com.au/wp-content/uploads/2024/04/Sea-Life-Sydney-Aquarium.jpg);
+    background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  margin: 0;
 }
 
 .header {
@@ -18,6 +23,7 @@ body {
     justify-content: space-around;
     text-align: center;
     align-items: center;
+    gap: 900px  ;
 }
 
 .page_container {
@@ -39,12 +45,9 @@ body {
     gap: 50px;
 }
 
-.picanha{
 
-display: flex;
-left: 200px;
 
-}
+
 .teste{
     width: 50px;
     height: 50px;
@@ -55,13 +58,3 @@ left: 200px;
     gap: 1000px;
 }
 
-.pamonha{
-    width: 200px;
-    height: 200px;
-    background-color: aquamarine;
-    display: flex;
-    left: 130px ;
-    position: relative;
-    flex: 1;
-
-}
