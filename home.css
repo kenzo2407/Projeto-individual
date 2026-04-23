@@ -6,12 +6,13 @@
 }
 
 
+
 .background {
     background-image: url(https://www.bondi38.com.au/wp-content/uploads/2024/04/Sea-Life-Sydney-Aquarium.jpg);
     background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
 }
 
@@ -23,44 +24,82 @@
     justify-content: space-around;
     text-align: center;
     align-items: center;
-    gap: 900px  ;
 }
 
 .page_container {
     background-color: #051336;
-    width: 400px;
-    height: 500px;
+    width: 80%;
+    height: 800px;
     border-radius: 10px;
-  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
 }
 
 .p_page_container{
-    width: 350px;
-    height: 450px;
+    width: 80%;
+    height:200px;
     border-radius: 10px;
-    background-color: white;
+    background-color:slateblue;
     display: flex;
-    margin-left: 10px;
-    margin-top: 10%;
-    justify-content: space-evenly;
-    align-self: center;
+    justify-content: space-around;
+    align-self:center;
     text-align: center;
-    align-items: center;
+    align-items:center;
 }
 
+.img_page_container{
+    background-image: url(https://static.escolakids.uol.com.br/2024/04/imagem-de-um-tubarao-baleia-no-fundo-do-mar.jpg);
+    background-size: 200px;
+    width: 200px;
+    height: 125px;
+    border-radius: 10px;
+    display: flex;
+    justify-content:right;
+}
+
+.t_page_container{
+    width: 100px;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+
+
 .container_pai{
-    margin-top: 100px;
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    
 }
 
-.sim{
+.footer{
+    height: 150px;
     display: flex;
-    gap: 50px;
+    flex-direction: row;
+    background-color: #051336;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: space-around;
 }
 
+.p_footer{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    
+}
+.header_3{
+    gap: 50px;
+    display: flex;
+}
 
 
 
