@@ -40,7 +40,7 @@
 
 .p_page_container{
     width: 80%;
-    height:200px;
+    height:250px;
     border-radius: 10px;
     background-color:slateblue;
     display: flex;
@@ -52,9 +52,9 @@
 
 .img_page_container{
     background-image: url(https://static.escolakids.uol.com.br/2024/04/imagem-de-um-tubarao-baleia-no-fundo-do-mar.jpg);
-    background-size: 200px;
-    width: 200px;
-    height: 125px;
+    background-size: 250px;
+    width: 250px;
+    height: 150px;
     border-radius: 10px;
     display: flex;
     justify-content:right;
