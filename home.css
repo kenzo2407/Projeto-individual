@@ -139,13 +139,18 @@
     display: flex;
     font-family: 'Codec Pro';
 }
-.button{
+nav a{
     width: 50px;
     border-radius: 10px;
     border-color: white;
     height: 30px;
+    margin-left: 270px;
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
+    padding: 6px 14px;
+    text-decoration: none;
+    font-weight: 400;
+    position: relative;
 }
