@@ -13,6 +13,7 @@ body{
   height: 100vh;
   margin: 0;
 
+
 }
 
 .header{
@@ -25,8 +26,58 @@ body{
     align-items: center;
      gap: 900px  ;
 }
+.cardPai{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
-.sim{
+.card{
+    height: 500px;
+    width: 90%;
+    display: flex;
+    background-color: navy;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    align-self:center ;
+}
+
+.innerCard{
+    height: 400px;
+    width: 90%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.TCard{
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: blue;
+border-radius: 10px;
+height: 50px;
+width: 300px;
+text-align: center;
+}
+
+.buttonCadastro{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: brown;
+    width: 100px;
+    height: 50px;
+}
+
+.abas{
     display: flex;
     gap: 50px;
 }

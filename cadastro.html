@@ -7,17 +7,65 @@
     <link rel="stylesheet" href="cadastro.css">
 </head>
 <body>
+    
     <div class="header">
 
         <a href="home.html" style="color: blueviolet;">Home</a>
         
-        <div class="sim">
+        <div class="abas">
             <a href="informações.html" style="color: blueviolet;">Informações</a>
             <a href="cadastro.html" style="color: blueviolet;">Cadastro</a>
             <a href="login.html" style="color: blueviolet;">Login</a>
-            
         </div>  
     </div>
-    <span style="color: chartreuse;">cadastro</span>
+
+    <div class="cardPai">
+        <div class="card">
+            <div class="innerCard"> <h1>cadastro</h1>  <br>
+                Email:
+                <input type="text" class="TCard" id="ipt_email" oninput="email()">
+                <div id="div_email"></div>
+                Qual seu usuário:
+                <input class="TCard" oninput="nome()" type="text" id="ipt_nome"> <br>
+                <div id="div_nome"></div>
+                Quanto você acha que você conhece sobre os aquários:
+                <select name="conhecimento" id="conhecimento">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select> <br>
+                <button class="buttonCadastro" onclick="cadastrar()">Cadastre-se</button>
+                <div id="div_button"></div>
+            </div>
+        </div>
+    </div>
 </body>
+<script>
+    function email(){
+        let mensagem=``;
+        let email= ipt_email.value;
+        let temArroba= email.includes("@");
+            if( temArroba == true){
+                div_email.innerHTML=`pode continuar`
+            }else {
+                div_email.innerHTML=`seu email deve conter o @`
+            }
+    }
+
+    function nome(){
+        let mensagem=``;
+        let nome=ipt_nome.value;
+        if(nome.length >= 5){
+            div_nome.innerHTML=`Pode continuar`
+        }else {
+            div_nome.innerHTML=`Seu usuário deve contar mais de 5 caracteres`
+        }
+    }
+    
+    function cadastrar(){
+        div_button.innerHTML=`deu certo`
+    }
+</script>
 </html>
