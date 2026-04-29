@@ -17,6 +17,7 @@ body{
 }
 
 .header{
+    
     height: 50px;
     background-color: #051336;
     flex-direction: row;
@@ -24,29 +25,28 @@ body{
     justify-content: space-around;
     text-align: center;
     align-items: center;
-     gap: 900px  ;
+
 }
 .cardPai{
-    margin-top: 70px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
 .card{
-    height: 500px;
-    width: 90%;
+    height: 623px;
+    width: 50%;
     display: flex;
     background-color: navy;
-    border-radius: 10px;
     justify-content: center;
     align-items: center;
     align-self:center ;
 }
 
 .innerCard{
-    height: 400px;
+    font-family: 'Codec Pro';
+    height: 90%;
     width: 90%;
     background-color: white;
     border-radius: 10px;
@@ -57,7 +57,7 @@ body{
     text-align: center;
 }
 
-.TCard{
+.InputCard{
 display: flex;
 justify-content: center;
 align-items: center;
