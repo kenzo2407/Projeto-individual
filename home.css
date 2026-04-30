@@ -25,7 +25,7 @@
 
 .header {
     height: 50px;
-    background-color: #051336;
+    background-color: black;
     flex-direction: row;
     display: flex;
     justify-content: space-around;
@@ -153,4 +153,19 @@ nav a{
     text-decoration: none;
     font-weight: 400;
     position: relative;
+}
+
+.saberMais{                 
+     height: 36px;
+    width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 2px solid var(--alt-color-1);
+    background-color: var(--alt-color-1);
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
 }

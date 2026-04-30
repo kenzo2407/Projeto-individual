@@ -8,28 +8,65 @@
 
 
 body{
-    background-image: url(https://www.bondi38.com.au/wp-content/uploads/2024/04/Sea-Life-Sydney-Aquarium.jpg);
+    background-image: url(https://iaplc.com/e/wp-content/uploads/sites/2/2025/03/0001_50023-1024x385.jpg);
     background-size: cover;
   background-position: center;
   background-attachment: fixed;
   height: 100vh;
   margin: 0;
 
+
 }
 
 
 .header {
     height: 50px;
-    background-color: #051336;
+    background-color: black;
     flex-direction: row;
     display: flex;
     justify-content: space-around;
     text-align: center;
     align-items: center;
-     gap: 900px  ;
+     
 }
 
 .sim{
     display: flex;
     gap: 50px;
+}
+
+.cardPai{
+    display: flex;
+    justify-content: center;
+
+}
+
+.cardInner{
+    flex-direction: column;
+    margin-top:150px;
+    width: 550px;
+    height: 300px;
+    border-radius: 10px;
+    background-color:green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Codec Pro';
+}
+
+.ipt{
+    height: 50px;
+    width: 200px;
+    background-color: white;
+    border-color: white;
+    border-radius: 10px;
+}
+
+.buttonEntrar{
+    height: 50px;
+    width: 150px;
+    background-color: white;
+    border-radius: 10px;
+    border-color: white;
 }

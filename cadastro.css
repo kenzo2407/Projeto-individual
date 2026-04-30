@@ -6,20 +6,19 @@
 }
 
 body{
-    background-image: url(https://www.bondi38.com.au/wp-content/uploads/2024/04/Sea-Life-Sydney-Aquarium.jpg);
+    background-image: url(https://japanjourneys.jp/wp-content/uploads/2019/08/A19-Pic-3.jpg);
     background-size: cover;
   background-position: center;
   background-attachment: fixed;
   height: 100vh;
   margin: 0;
 
-
 }
 
 .header{
     
     height: 50px;
-    background-color: #051336;
+    background-color: black;
     flex-direction: row;
     display: flex;
     justify-content: space-around;
@@ -81,3 +80,4 @@ text-align: center;
     display: flex;
     gap: 50px;
 }
+

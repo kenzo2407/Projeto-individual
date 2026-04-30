@@ -19,13 +19,13 @@ body{
 
 .header {
     height: 50px;
-    background-color: #051336;
+    background-color: black;
     flex-direction: row;
     display: flex;
     justify-content: space-around;
     text-align: center;
     align-items: center;
-     gap: 900px  ;
+   
 }
 
 .sim{
