@@ -12,7 +12,7 @@
         <a href="home.html" style="color: blueviolet;">Home</a>
         
         <div class="abas">
-            <a href="informações.html" style="color: blueviolet; font-family: Codec Pro;">Informações</a>
+            <a href="quiz.html" style="color: blueviolet; font-family: Codec Pro;">Quiz</a>
             <a href="cadastro.html" style="color: blueviolet; font-family: Codec Pro;">Cadastro</a>
             <a href="login.html" style="color: blueviolet; font-family: Codec Pro; ">Login</a>
         </div>  
@@ -24,10 +24,14 @@
             <div class="innerCard"> <h1>cadastro</h1>  <br> <br>
                 Email:
                 <input type="text" class="InputCard" id="ipt_email" oninput="email()">
-                <div id="div_email"></div> <br> <br>
-                Qual seu usuário:
-                <input class="InputCard" oninput="nome()" type="text" id="ipt_nome"> <br> <br>
+                <div id="div_email"></div> <br> 
+                Nome do seu usuário(deve conter mais de 5 caracteres):
+                <input class="InputCard" oninput="nome()" type="text" id="ipt_nome"> <br> 
                 <div id="div_nome"></div>
+                Senha:
+                <input type="text" class="InputCard" id="ipt_senha" oninput="senha()">
+                <div id="div_senha"></div> <br>
+                
                 Quanto você acha que você conhece sobre os aquários:
                 <select name="conhecimento" id="conhecimento">
                     <option value="1">1</option>
@@ -48,24 +52,49 @@
         let email= ipt_email.value;
         let temArroba= email.includes("@");
             if( temArroba == true){
-                div_email.innerHTML=`pode continuar`
+                div_email.innerHTML=`Pode continuar`
             }else {
                 div_email.innerHTML=`seu email deve conter o @`
             }
     }
 
     function nome(){
+        let cont=0;
         let mensagem=``;
         let nome=ipt_nome.value;
+        for (cont=0; cont <= nome.length; cont ++){
+            if(nome.length >= 5){
+            div_nome.innerHTML=`Pode continuar`
+        }else {
+            let diferenca= 5 - cont;
+            div_nome.innerHTML=`Seu usuário deve contar mais ${diferenca} caracteres`
+        }
+        }
+        /*
         if(nome.length >= 5){
             div_nome.innerHTML=`Pode continuar`
         }else {
             div_nome.innerHTML=`Seu usuário deve contar mais de 5 caracteres`
         }
+            */
+    }
+
+    function senha(){
+        let senha=ipt_senha.value;
+        if(senha.length < 4){
+            div_senha.innerHTML=`A senha não pode conter menos do que 4 caracteres`
+        }else{
+            div_senha.innerHTML=`Pode continuar`
+        }
     }
     
    function cadastrar(){
-    div_button.innerHTML=`funcionou`
-   } 
+    if (div_nome.innerHTML == 'Pode continuar' && div_email.innerHTML==`Pode continuar` && div_senha.innerHTML==`Pode continuar`){
+        div_button.innerHTML=`Seu cadastro foi realizado com sucesso`
+    }else{
+        div_button.innerHTML=`Erro! Veja novamente se não há um erro nos campos do cadastro`
+    }
+   }
+        
 </script>
 </html>
