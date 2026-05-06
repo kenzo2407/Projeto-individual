@@ -30,7 +30,7 @@ body{
      
 }
 
-.sim{
+.headerGap{
     display: flex;
     gap: 50px;
 }
