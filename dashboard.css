@@ -68,3 +68,18 @@
     gap: 50px;
     display: flex;
 }
+
+.footer {
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.p_footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;

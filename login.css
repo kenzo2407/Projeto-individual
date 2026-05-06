@@ -44,9 +44,9 @@ body{
 .cardInner{
     flex-direction: column;
     margin-top:150px;
-    width: 550px;
-    height: 300px;
-    border-radius: 10px;
+    width: 600px;
+    height: 350px;
+    border-radius: 20px;
     background-color:green;
     display: flex;
     justify-content: center;

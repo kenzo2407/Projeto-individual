@@ -80,7 +80,7 @@ background-image: url(https://charterhouse-aquatics.com/cdn/shop/articles/aquasc
 }
 
 .t_imgpage_container {
-    width: 300px;
+    width: 350px;
     height: 100px;
     display: flex;
     align-items: center;
@@ -121,7 +121,7 @@ background-image: url(https://charterhouse-aquatics.com/cdn/shop/articles/aquasc
     height: 150px;
     display: flex;
     flex-direction: row;
-    background-color: #051336;
+    background-color: black;
     margin-top: 50px;
     align-items: center;
     justify-content: space-around;
