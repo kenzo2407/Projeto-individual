@@ -47,8 +47,8 @@
 }
 
 .p_page_container {
-    width: 80%;
-    height: 700px;
+    width: 85%;
+    height: 750px;
     border-radius: 10px;
     background-color: slateblue;
     display: flex;
@@ -94,7 +94,7 @@ background-image: url(https://charterhouse-aquatics.com/cdn/shop/articles/aquasc
     display: flex;
     align-items: center;
     text-align: center;
-
+    
 }
 
 .row_container {
@@ -168,4 +168,14 @@ nav a{
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
+}
+
+.botao{
+    background-color:black ;
+    color: white;
+    padding: 10px 0px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-family: 'Codec Pro';
+    
 }
