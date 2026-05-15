@@ -20,20 +20,16 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                       /* aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length > 0) {
+                       
                                     res.json({  
                                         id: resultadoAutenticar[0].id,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
-                                        aquarios: resultadoAquarios
+                                        
                                     });
-                                } else {
-                                    res.status(204).json({ aquarios: [] });
-                                }
-                            }) */
+                                
+                            
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -88,7 +84,31 @@ function cadastrar(req, res) {
     }
 }
 
+function quiz(req, res){
+     var pontos=req.body.pontosServidor;
+     if (pontos == undefined){
+        res.status(400).send("Sua pontuação está undefined");
+     }  else {
+        usuarioModel.quiz(pontos)
+        .then(
+            function(resultadoQuiz){
+                res.JSON(resultadoQuiz);
+            }
+        ).catch(
+            function(erro){
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao registrar as pontuações! Erro:",
+                    erro.sqlMessage
+                );
+                res.status(600).json(erro.sqlMessage)
+            }
+        )
+     }
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    quiz,
 }

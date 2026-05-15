@@ -32,42 +32,18 @@
             <input type="text" class="ipt" id="ipt_email"> <br> <br>
             Qual é a sua senha:
             <input type="text" id="ipt_senha" class="ipt"> <br> <br>
-            <button onclick="autenticar()" class="buttonEntrar">Entrar</button>
+            <button onclick="login()" class="buttonEntrar">Entrar</button>
         </div>
     </div>
 </body>
 <script>
-    function autenticar() {
+    function login() {
         let email = ipt_email.value;
         let senha = ipt_senha.value;
 
-        if (
-      email == "" ||
-      senha == "" 
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
-
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-      if (email.includes("@")) {
-        console.log("Código de ativação válido.");
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    
-
 
         fetch("/usuarios/autenticar", {
-            method: "GET",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -82,32 +58,29 @@
                 console.log("resposta: ", resposta);
 
                  if (resposta.ok) {
-                   cardErro.style.display = "block";
-         
-                   mensagem_erro.innerHTML =
-                     "Login efetuado com sucesso!";
+                  resposta.json().then(json =>{
+
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.SENHA_USUARIO = json.senha;
+                    sessionStorage.ID_USUARIO=json.idUsuario;
+                  });
                  
                 setTimeout(() => {
-                    window.location = "perfil.html";
-                }, "2000");
+                    window.location = "quiz.html";
+                }, "1000");
 
-                limparFormulario();
-                finalizarAguardar();
+                
             } else {
-                throw "Houve um erro ao tentar efetuar o login!";
+                throw "Houve um erro ao tentar realizar o cadastro!";
             }
       })
       .catch (function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
     });
-
+    
     return false;
     }
-
-    function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
 </script>
 
 </html>
