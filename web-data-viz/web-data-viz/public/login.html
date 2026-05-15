@@ -12,7 +12,7 @@
     <div class="img">
         <div class="header">
 
-            <a href="home.html" style="color: blueviolet; font-family: Codec Pro;">Home</a>
+            <a href="index.html" style="color: blueviolet; font-family: Codec Pro;">Home</a>
 
             <div class="headerGap">
                 <a href="quiz.html" style="color: blueviolet; font-family: Codec Pro;">Quiz</a>
@@ -23,17 +23,91 @@
             </div>
         </div>
     </div>
-   
+
 
     <div class="cardPai">
-        <div class="cardInner"><h1 style="font-family: Codec Pro;">login</h1> <br> <br>
-            <span style="font-family: Codec Pro;"> Qual é o seu usuário: </span> 
-            <input type="text" class="ipt" id="ipt_login"> <br> <br>
-            Qual é o seu email:
-            <input type="text" id="ipt_email" class="ipt"> <br> <br>
-            <button onclick="entrar()" class="buttonEntrar">Entrar</button>
+        <div class="cardInner">
+            <h1 style="font-family: Codec Pro;">login</h1> <br> <br>
+            <span style="font-family: Codec Pro;"> Qual é o seu email: </span>
+            <input type="text" class="ipt" id="ipt_email"> <br> <br>
+            Qual é a sua senha:
+            <input type="text" id="ipt_senha" class="ipt"> <br> <br>
+            <button onclick="autenticar()" class="buttonEntrar">Entrar</button>
         </div>
     </div>
 </body>
+<script>
+    function autenticar() {
+        let email = ipt_email.value;
+        let senha = ipt_senha.value;
+
+        if (
+      email == "" ||
+      senha == "" 
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Verificando se o código de ativação é de alguma empresa cadastrada
+      if (email.includes("@")) {
+        console.log("Código de ativação válido.");
+      } else {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+        finalizarAguardar();
+      }
+    
+
+
+        fetch("/usuarios/autenticar", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                emailServidor: email,
+                senhaServidor: senha,
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                 if (resposta.ok) {
+                   cardErro.style.display = "block";
+         
+                   mensagem_erro.innerHTML =
+                     "Login efetuado com sucesso!";
+                 
+                setTimeout(() => {
+                    window.location = "perfil.html";
+                }, "2000");
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw "Houve um erro ao tentar efetuar o login!";
+            }
+      })
+      .catch (function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+    });
+
+    return false;
+    }
+
+    function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>
 
 </html>
