@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+
+<body>
+
+<div class="background">
+
+    <div class="painel">
+        <div class="inner_painel">
+            <div class="p_painel" style="color: white;">
+                <img src="https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6Im1fNmEwNTMyYzViN2I0ODE5MWE1NTAxNmIyNjY3ZDNjNDI6ZmlsZV8wMDAwMDAwMGY5NTg3MWY1YTY0Y2FjZWQwZmMwOTAyZSIsInRzIjoiMjA1ODciLCJwIjoicHlpIiwiY2lkIjoiMSIsInNpZyI6IjFkNDE5ZjU4MjQ5NmM4YTg2Mzk4N2NiMmRhYzc1ZDNlZDkwYTQ1ZWRlODBkNGUyNjRiM2E0ZmIwNzJkNzM0NzAiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsLCJjcyI6bnVsbCwiY2RuIjpudWxsLCJmbiI6bnVsbCwiY2QiOm51bGwsImNwIjpudWxsLCJtYSI6bnVsbH0=" alt="" height="100px" width="100px">
+                <span>
+                    <a href="quiz.html" style="color: white;">Quiz</a>
+                </span>
+                <span>
+                    <a href="dashboard.html" style="color: white;">Dashboard</a>
+                </span>
+
+                <span>
+              <a href="home.html" style="color: white;" >Voltar para a página home</a>
+            </span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card_pai">
+        <div class="card_quiz">
+            <div class="p_quiz">
+                <h1 id="quiz"></h1>
+                <div id="div_pergunta" style="font-family: Codec Pro;"></div>
+                <button onclick="questao(0)" id="bt0"></button> <br>
+                <button onclick="questao(1)" id="bt1"></button> <br>
+                <button onclick="questao(2)" id="bt2"></button> <br>
+                <button onclick="questao(3)" id="bt3"></button> <br>
+                <div id="div_mensagem"></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+    
+    
+</body>
+<script>
+
+        let perguntas = [
+            {
+            pergunta: "Qual é a função do termostato?",
+            opcoes:["Decorar Aquário", "Medir alimento", "Medir a temperatura", "Aquecer a água"],
+            correta:2
+            },
+
+            {
+            pergunta: "O pH da água influencia no que?",
+            opcoes:["A saúde dos peixes", "O tamanho do aquário", "A cor do vidro", "A eficiência dos filtros"],
+            correta:0
+            },
+            {
+            pergunta: "Qual destes peixes é mais comum em aquários de água doce?",
+            opcoes:["Tubarão", "Betta", "Baleia", "Jacaré"],
+            correta:1
+            },
+            {
+            pergunta: "O que pode acontecer em um aquário onde o ciclo de nitrogênio não esteja estabilizado?",
+            opcoes:["A água aumenta de temperatura", "O nível de amônia pode aumentar e prejudicar os peixes", "Os peixes crescerão mais rápidos", "O filtro para de funcionar lentamente"],
+            correta:1
+            }
+        ];
+
+    let Atual=0;
+    let pontuacao=0;
+
+    function carregar(){
+        div_pergunta.innerHTML=perguntas[Atual].pergunta;
+
+        bt0.innerHTML= perguntas[Atual].opcoes[0];
+        bt1.innerHTML= perguntas[Atual].opcoes[1];
+        bt2.innerHTML= perguntas[Atual].opcoes[2];
+        bt3.innerHTML= perguntas[Atual].opcoes[3];
+
+    }
+
+    function questao(escolha){
+        if(escolha == perguntas[Atual].correta){
+            pontuacao++;
+        }
+    
+        Atual++;
+
+
+        if(Atual < perguntas.length){
+            carregar();
+        }else {
+            div_mensagem.innerHTML=`Fim do quiz! Você acertou ${pontuacao}`
+        }
+    }
+
+carregar();
+</script>
+
+</html>
