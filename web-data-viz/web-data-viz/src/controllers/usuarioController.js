@@ -22,11 +22,9 @@ function autenticar(req, res) {
 
                        
                                     res.json({  
-                                        id: resultadoAutenticar[0].id,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
-                                        
                                     });
                                 
                             
@@ -86,13 +84,41 @@ function cadastrar(req, res) {
 
 function quiz(req, res){
      var pontos=req.body.pontosServidor;
+
      if (pontos == undefined){
         res.status(400).send("Sua pontuação está undefined");
      }  else {
+
         usuarioModel.quiz(pontos)
         .then(
             function(resultadoQuiz){
                 res.JSON(resultadoQuiz);
+            }
+        ).catch(
+            function(erro){
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao registrar as pontuações! Erro:",
+                    erro.sqlMessage
+                );
+                res.status(600).json(erro.sqlMessage)
+            }
+        )
+     }
+}
+
+
+function dashboard(req, res){
+     var pontos=req.body.pontosServidor;
+
+     if (pontos == undefined){
+        res.status(400).send("Sua pontuação está undefined");
+     }  else {
+
+        usuarioModel.quiz(pontos)
+        .then(
+            function(resultadoDashboard){
+                res.JSON(resultadoDashboard);
             }
         ).catch(
             function(erro){

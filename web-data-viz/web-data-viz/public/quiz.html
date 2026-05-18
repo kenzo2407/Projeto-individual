@@ -90,7 +90,7 @@
 
     function questao(escolha){
         if(escolha == perguntas[Atual].correta){
-            pontoso++;
+            pontos++;
         }
         
         Atual++;
@@ -115,11 +115,13 @@
                 .then(function (resposta) {
                     console.log("resposta: ", resposta);
 
-                    // if (resposta.ok) {
-                        //   cardErro.style.display = "block";
-                        
-                        //   mensagem_erro.innerHTML =
-            //     "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                   if (resposta.ok) {
+                  resposta.json().then(json =>{
+
+                    console.log(JSON.stringify(json));
+                    sessionStorage.PONTOS_USUARIO = json.pontos;
+                  });
+                }
             
             //   setTimeout(() => {
                 //     window.location = "login.html";
