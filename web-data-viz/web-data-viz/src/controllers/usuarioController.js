@@ -92,7 +92,7 @@ function quiz(req, res){
         usuarioModel.quiz(pontos)
         .then(
             function(resultadoQuiz){
-                res.JSON(resultadoQuiz);
+                res.json(resultadoQuiz);
             }
         ).catch(
             function(erro){
@@ -109,16 +109,13 @@ function quiz(req, res){
 
 
 function dashboard(req, res){
-     var pontos=req.body.pontosServidor;
 
-     if (pontos == undefined){
-        res.status(400).send("Sua pontuação está undefined");
-     }  else {
+     
 
-        usuarioModel.quiz(pontos)
+        usuarioModel.dashboard()
         .then(
             function(resultadoDashboard){
-                res.JSON(resultadoDashboard);
+                res.json(resultadoDashboard);
             }
         ).catch(
             function(erro){
@@ -131,10 +128,11 @@ function dashboard(req, res){
             }
         )
      }
-}
+
 
 module.exports = {
     autenticar,
     cadastrar,
     quiz,
+    dashboard,
 }
