@@ -16,7 +16,7 @@ router.post("/quiz", function (req, res) {
     usuarioController.quiz(req, res);
 });
 
-router.get("/dashboard", function (req, res){
+router.post("/dashboard", function (req, res){
     usuarioController.dashboard(req,res);
 })
 

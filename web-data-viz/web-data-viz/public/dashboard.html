@@ -12,11 +12,13 @@
   <div class="back_dashboard">
 
     <div class="background">
-      
+
       <div class="painel">
         <div class="inner_painel">
           <div class="p_painel" style="color: white;">
-            <img src="https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6Im1fNmEwNTMyYzViN2I0ODE5MWE1NTAxNmIyNjY3ZDNjNDI6ZmlsZV8wMDAwMDAwMGY5NTg3MWY1YTY0Y2FjZWQwZmMwOTAyZSIsInRzIjoiMjA1ODciLCJwIjoicHlpIiwiY2lkIjoiMSIsInNpZyI6IjFkNDE5ZjU4MjQ5NmM4YTg2Mzk4N2NiMmRhYzc1ZDNlZDkwYTQ1ZWRlODBkNGUyNjRiM2E0ZmIwNzJkNzM0NzAiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsLCJjcyI6bnVsbCwiY2RuIjpudWxsLCJmbiI6bnVsbCwiY2QiOm51bGwsImNwIjpudWxsLCJtYSI6bnVsbH0=" alt="" height="100px" width="100px">
+            <img
+              src="https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6Im1fNmEwNTMyYzViN2I0ODE5MWE1NTAxNmIyNjY3ZDNjNDI6ZmlsZV8wMDAwMDAwMGY5NTg3MWY1YTY0Y2FjZWQwZmMwOTAyZSIsInRzIjoiMjA1ODciLCJwIjoicHlpIiwiY2lkIjoiMSIsInNpZyI6IjFkNDE5ZjU4MjQ5NmM4YTg2Mzk4N2NiMmRhYzc1ZDNlZDkwYTQ1ZWRlODBkNGUyNjRiM2E0ZmIwNzJkNzM0NzAiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsLCJjcyI6bnVsbCwiY2RuIjpudWxsLCJmbiI6bnVsbCwiY2QiOm51bGwsImNwIjpudWxsLCJtYSI6bnVsbH0="
+              alt="" height="100px" width="100px">
             <span>
               <a href="quiz.html" style="color: white;">Quiz</a>
             </span>
@@ -24,12 +26,12 @@
               <a href="dashboard.html" style="color: white;">Dashboard</a>
             </span>
             <span>
-              <a href="index.html" style="color: white;" >Voltar para a página home</a>
+              <a href="index.html" style="color: white;">Voltar para a página home</a>
             </span>
           </div>
         </div>
       </div>
-      
+
       <div class="cardPai">
         <div class="row">
 
@@ -45,83 +47,98 @@
 
         </div>
       </div>
-</div>
-  
+    </div>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  function obterDados(){
-    
-   fetch('/usuarios/dashboard',{
-    method:"GET"
-   })
-   .then(function(response){
-     return response.json();
-   })
+  function obterDados() {
 
-   .then(function(data){
-     plotarGraficoLinha(data);
-     plotarGraficoBarra(data);
-   })
+    fetch('/usuarios/dashboard', {
+       method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+    body: JSON.stringify({
+        pontosServidor: pontos,
+        qtd_usuariosServidor: qtd_usuarios,
+      }),
+    })
+      .then(function (response) {
+        return response.json();
+      })
 
-   .catch(function(err){
-     console.log(err);
-   })
+      .then(function (data) {
+        plotarGraficoLinha(data);
+        plotarGraficoBarra(data);
+      })
 
-    
+      .catch(function (err) {
+        console.log(err);
+      })
   }
-   
 
-  function plotarGraficoLinha(data){
-var usuario=[];
-var pontos=[];
 
-    for(var i = 0; i < data.length; i++){
-      pontos.push(data[i].pontos);
-      usuario.push(data[i].usuario);
-    } 
-  
-  const ctx = document.getElementById('myChart');
-  
-  new Chart(ctx, {
-    type: 'line',
-    data: {
+  function plotarGraficoLinha() {
+    var usuario = [];
+    var pontuacao = [];
+
+    for (var i = 0; i < dados.length; i++) {
+      pontuacao.push(dados[i].pontuacao);
+      usuario.push(dados[i].usuario);
+    }
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: usuario,
+        datasets: [{
+          label: 'Pontuação',
+          data: pontuacao,
+          borderWidth: 1
+        }]
+      },
+    });
+  }
+
+
+  function plotarGraficoBarra() {
+    var usuario = [];
+    var pontuacao = [];
+
+    for (var i = 0; i < dados.length; i++) {
+      pontuacao.push(dados[i].pontuacao);
+      usuario.push(dados[i].usuario);
+    }
+
+    const data = {
       labels: usuario,
       datasets: [{
         label: 'Pontuação',
-        data: pontos,
-        borderWidth: 1
+        data: pontuacao,
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4
       }]
-    },
-  });
+    };
+
+    const config2 = {
+      type: 'bar',
+      data: data,
+    };
+
+
+    const ctx2 = document.getElementById('myChart2');
+
+    new Chart(ctx2, config2);
+
   }
 
-  
-function plotarGraficoBarra(data){
- var usuario=[];
-var pontos=[];
-
-    for(var i = 0; i < data.length; i++){
-      pontos.push(data[i].pontos);
-      usuario.push(data[i].usuario);
-    } 
-  
-  const ctx2 = document.getElementById('myChart2');
-  
-  new Chart(ctx2, {
-    type: 'bar',
-    data: {
-      labels: usuario,
-      datasets: [{
-        label: 'Pontuação',
-        data: pontos,
-        borderWidth: 1
-      }]
-    },
-  });
-  }
-
-  
 </script>
 
 </html>

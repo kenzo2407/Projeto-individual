@@ -20,14 +20,15 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                       
-                                    res.json({  
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha,
-                                    });
-                                
-                            
+
+                        res.json({
+                            email: resultadoAutenticar[0].email,
+                            nome: resultadoAutenticar[0].nome,
+                            senha: resultadoAutenticar[0].senha,
+                            idUsuario: resultadoAutenticar[0].idUsuario,
+                        });
+
+
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -50,7 +51,7 @@ function cadastrar(req, res) {
     var nome = req.body.nomeServidor;
     var email = req.body.emailServidor;
     var senha = req.body.senhaServidor;
-    var conhecimento= req.body.conhecimentoServidor;
+    var conhecimento = req.body.conhecimentoServidor;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -82,43 +83,47 @@ function cadastrar(req, res) {
     }
 }
 
-function quiz(req, res){
-     var pontos=req.body.pontosServidor;
+function quiz(req, res) {
+    var pontos = req.body.pontosServidor;
+    var fkUsuario = req.body.idUsuario;
 
-     if (pontos == undefined){
+
+    if (pontos == undefined) {
         res.status(400).send("Sua pontuação está undefined");
-     }  else {
+    } else {
 
-        usuarioModel.quiz(pontos)
-        .then(
-            function(resultadoQuiz){
-                res.json(resultadoQuiz);
-            }
-        ).catch(
-            function(erro){
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao registrar as pontuações! Erro:",
-                    erro.sqlMessage
-                );
-                res.status(600).json(erro.sqlMessage)
-            }
-        )
-     }
+        usuarioModel.quiz(pontos, fkUsuario)
+            .then(
+                function (resultadoQuiz) {
+                    res.json(resultadoQuiz);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao registrar as pontuações! Erro:",
+                        erro.sqlMessage
+                    );
+                    res.status(600).json(erro.sqlMessage)
+                }
+            )
+    }
 }
 
 
-function dashboard(req, res){
+function dashboard(req, res) {
+    var pontos = req.body.pontosServidor;
+    var qtd_usuarios = req.body.qtd_usuariosServidor;
 
-     
 
-        usuarioModel.dashboard()
+
+    usuarioModel.dashboard(pontos, qtd_usuarios)
         .then(
-            function(resultadoDashboard){
+            function (resultadoDashboard) {
                 res.json(resultadoDashboard);
             }
         ).catch(
-            function(erro){
+            function (erro) {
                 console.log(erro);
                 console.log(
                     "\nHouve um erro ao registrar as pontuações! Erro:",
@@ -127,7 +132,7 @@ function dashboard(req, res){
                 res.status(600).json(erro.sqlMessage)
             }
         )
-     }
+}
 
 
 module.exports = {
