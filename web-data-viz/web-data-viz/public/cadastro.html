@@ -71,8 +71,8 @@
            let email= ipt_email.value;
            let nome=ipt_nome.value;
 
-           if(senha.length < 4){
-               div_senha.innerHTML=`A senha não pode conter menos do que 4 caracteres`;
+           if(senha.length < 6){
+               div_senha.innerHTML=`A senha não pode conter menos do que 6 caracteres`;
                valido= false;
             }else{
                 div_senha.innerHTML=`Pode continuar`
@@ -93,15 +93,15 @@
 
             let mensagem=``;
             let temArroba= email.includes("@");
-            if( temArroba == true){
+            let temPonto=email.includes(".")
+            if( temArroba == true && temPonto == true){
                     div_email.innerHTML=`Pode continuar`
                 }else {
-                    div_email.innerHTML=`seu email deve conter o @`;
+                    div_email.innerHTML=`seu email deve conter o @ e o .`;
                     valido=false;
                 }
             
 
-                // arrumar como o cadastro funciona,  não está recendo os valores.
             if (valido){
                 div_button.innerHTML=`Seu cadastro foi realizado com sucesso`
                 
@@ -113,8 +113,7 @@
                         "Content-Type": "application/json",
                     },
     body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
+     
         nomeServidor: nome,
         emailServidor: email,
         senhaServidor: senha,
