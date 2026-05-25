@@ -101,7 +101,7 @@
         }else {
             div_mensagem.innerHTML=`Fim do quiz! Você acertou ${pontos}`
             
-            fetch("/usuarios/quiz", {
+            fetch("/quiz/quiz", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

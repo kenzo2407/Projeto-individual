@@ -34,11 +34,14 @@ function quiz(pontos, fkUsuario){
     return database.executar(instrucaoSql);
 }
 
-function dashboard(pontos, qtd_usuarios){
+function dashboard(){
     
     var instrucaoSql = `
-        SELECT pontos FROM quiz ;
-        SELECT COUNT(idQuiz) qtd_usuarios FROM quiz ;
+          SELECT
+            quiz.pontos
+        FROM quiz
+        ORDER BY pontos DESC;
+
     `;
    
     return database.executar(instrucaoSql);

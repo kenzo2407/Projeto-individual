@@ -6,18 +6,6 @@ var usuarioController = require("../controllers/usuarioController");
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
-})
-
-router.post("/autenticar", function (req, res) {
-    usuarioController.autenticar(req, res);
 });
-
-router.post("/quiz", function (req, res) {
-    usuarioController.quiz(req, res);
-});
-
-router.post("/dashboard", function (req, res){
-    usuarioController.dashboard(req,res);
-})
 
 module.exports = router;

@@ -112,12 +112,12 @@ function quiz(req, res) {
 
 
 function dashboard(req, res) {
-    var pontos = req.body.pontosServidor;
-    var qtd_usuarios = req.body.qtd_usuariosServidor;
+   /* var pontos = req.body.pontosServidor;
+    var qtd_usuarios = req.body.qtd_usuariosServidor; */
 
 
 
-    usuarioModel.dashboard(pontos, qtd_usuarios)
+    usuarioModel.dashboard()
         .then(
             function (resultadoDashboard) {
                 res.json(resultadoDashboard);
@@ -131,7 +131,7 @@ function dashboard(req, res) {
                 );
                 res.status(600).json(erro.sqlMessage)
             }
-        )
+        );
 }
 
 
