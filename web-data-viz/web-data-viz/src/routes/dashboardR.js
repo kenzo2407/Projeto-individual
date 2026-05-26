@@ -1,9 +1,9 @@
 var express = require("express");
 var router = express.Router();
-var usuarioController = require("../controllers/usuarioController");
+var dashboardController = require("../controllers/dashboardController");
 
 router.get("/dashboard", function (req, res){
-    usuarioController.dashboard(req,res);
+    dashboardController.dashboard(req,res);
 });
 
 

@@ -1,50 +1,7 @@
 var usuarioModel = require("../models/usuarioModel");
 var aquarioModel = require("../models/aquarioModel");
 
-function autenticar(req, res) {
-    var email = req.body.emailServidor;
-    var senha = req.body.senhaServidor;
 
-    if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
-    } else {
-
-        usuarioModel.autenticar(email, senha)
-            .then(
-                function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
-
-                    if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
-
-
-                        res.json({
-                            email: resultadoAutenticar[0].email,
-                            nome: resultadoAutenticar[0].nome,
-                            senha: resultadoAutenticar[0].senha,
-                            idUsuario: resultadoAutenticar[0].idUsuario,
-                        });
-
-
-                    } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-
-}
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -83,61 +40,9 @@ function cadastrar(req, res) {
     }
 }
 
-function quiz(req, res) {
-    var pontos = req.body.pontosServidor;
-    var fkUsuario = req.body.idUsuario;
 
-
-    if (pontos == undefined) {
-        res.status(400).send("Sua pontuação está undefined");
-    } else {
-
-        usuarioModel.quiz(pontos, fkUsuario)
-            .then(
-                function (resultadoQuiz) {
-                    res.json(resultadoQuiz);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao registrar as pontuações! Erro:",
-                        erro.sqlMessage
-                    );
-                    res.status(600).json(erro.sqlMessage)
-                }
-            )
-    }
-}
-
-
-function dashboard(req, res) {
-   /* var pontos = req.body.pontosServidor;
-    var qtd_usuarios = req.body.qtd_usuariosServidor; */
-
-
-
-    usuarioModel.dashboard()
-        .then(
-            function (resultadoDashboard) {
-                res.json(resultadoDashboard);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao registrar as pontuações! Erro:",
-                    erro.sqlMessage
-                );
-                res.status(600).json(erro.sqlMessage)
-            }
-        );
-}
 
 
 module.exports = {
-    autenticar,
     cadastrar,
-    quiz,
-    dashboard,
 }
