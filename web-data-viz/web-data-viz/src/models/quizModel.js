@@ -6,8 +6,8 @@ function quiz(pontos, fkUsuario){
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO quiz (pontos, fkUsuario) VALUES ('${pontos}', ${fkUsuario});
-    `;
+    INSERT INTO quiz (pontos, fkUsuario, dataR) VALUES ('${pontos}', ${fkUsuario}, NOW());
+`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }

@@ -2,145 +2,146 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="dashboard.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 
 <body onload="obterDadosGrafico()">
-  <div class="back_dashboard">
+    <div class="back_dashboard">
 
-    <div class="background">
-      <div class="painel">
-        <div class="inner_painel">
-          <div class="p_painel" style="color: white;">
-            <img src="https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6Im1fNmEwNTMyYzViN2I0ODE5MWE1NTAxNmIyNjY3ZDNjNDI6ZmlsZV8wMDAwMDAwMGY5NTg3MWY1YTY0Y2FjZWQwZmMwOTAyZSIsInRzIjoiMjA1ODciLCJwIjoicHlpIiwiY2lkIjoiMSIsInNpZyI6IjFkNDE5ZjU4MjQ5NmM4YTg2Mzk4N2NiMmRhYzc1ZDNlZDkwYTQ1ZWRlODBkNGUyNjRiM2E0ZmIwNzJkNzM0NzAiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsLCJjcyI6bnVsbCwiY2RuIjpudWxsLCJmbiI6bnVsbCwiY2QiOm51bGwsImNwIjpudWxsLCJtYSI6bnVsbH0="
-                alt="" height="100px" width="100px">
-                <span>
-                <a href="quiz.html" style="color: white;">Quiz</a>
-              </span>
-              <span>
-                <a href="dashboard.html" style="color: white;">Dashboard</a>
-              </span>
-              <span>
-                <a href="index.html" style="color: white;">Voltar para a página home</a>
-              </span>
+        <div class="background">
+            <div class="painel">
+                <div class="inner_painel">
+                    <div class="p_painel" style="color: white;">
+                        <img src="https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6Im1fNmEwNTMyYzViN2I0ODE5MWE1NTAxNmIyNjY3ZDNjNDI6ZmlsZV8wMDAwMDAwMGY5NTg3MWY1YTY0Y2FjZWQwZmMwOTAyZSIsInRzIjoiMjA1ODciLCJwIjoicHlpIiwiY2lkIjoiMSIsInNpZyI6IjFkNDE5ZjU4MjQ5NmM4YTg2Mzk4N2NiMmRhYzc1ZDNlZDkwYTQ1ZWRlODBkNGUyNjRiM2E0ZmIwNzJkNzM0NzAiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsLCJjcyI6bnVsbCwiY2RuIjpudWxsLCJmbiI6bnVsbCwiY2QiOm51bGwsImNwIjpudWxsLCJtYSI6bnVsbH0="
+                            alt="" height="100px" width="100px">
+                        <span>
+                            <a href="quiz.html" style="color: white;">Quiz</a>
+                        </span>
+                        <span>
+                            <a href="dashboard.html" style="color: white;">Dashboard</a>
+                        </span>
+
+                        <span>
+                            <a href="index.html" style="color: white;">Voltar para a página home</a>
+                        </span>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="inner_dashboard">
+            <div class="inner_dashboard">
 
-        <div class="kpis">
+                <div class="kpis">
 
-          <div class="kpi">
-            <h1 id="maiorPontuacao">0</h1>
-            <p>Maior Pontuação</p>
-          </div>
+                    <div class="kpi">
+                        <h1 id="maiorPontuacao">0</h1>
+                        <p>Maior Pontuação</p>
+                    </div>
 
-          <div class="kpi">
-            <h1 id="mediaPontuacao">0</h1>
-            <p>Média de Pontuação</p>
-          </div>
+                    <div class="kpi">
+                        <h1 id="mediaPontuacao">0</h1>
+                        <p>Média de Pontuação</p>
+                    </div>
 
-        </div>
+                </div>
 
-        <div class="cardPai">
-          <div class="row">
+                <div class="cardPai">
+                    <div class="row">
 
-            <div class="dashboardLinePai">
-              <div class="dashboardLine">
-                <canvas id="myChart"></canvas>
-              </div>
+                        <div class="dashboardLinePai">
+                            <div class="dashboardLine">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="dashboardBarPai">
+                            <canvas id="myChart2"></canvas>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-
-            <div class="dashboardBarPai">
-              <canvas id="myChart2"></canvas>
-            </div>
-
-          </div>
         </div>
-      </div>
-    </div>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-/*
-    let proximaAtualizacao;
-
-    window.onload = exibirPontosDoUsuario();
-
-    function exibirPontosDoUsuario() {
-        var pontos = JSON.parse(sessionStorage.PONTOS);
-        pontos.forEach(item => {
-            document.getElementById("myChart").innerHTML += `
-            <button class="btn-chart" onclick="exibirPontos${item.pontos})" id="myChart${item.pontos}"</button>
-            `
-
-            document.getElementById("myChart").innerHTML += `
-                <div id="myChart${item.pontos}">
-                    <h3>
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
-                    </h3>
-                    <div class="dashboardLine">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
-                    </div>
-                </div>
-            `
-
-            obterDadosGrafico(item.id)
-        });
-
-        if (pontos.length > 0) {
-            exibirPontos(pontos[0].id)
-        }
-    }
-
+    /*
+        let proximaAtualizacao;
     
-    function alterarTitulo() {
-      var tituloPontos = document.getElementById(`tituloPontos`)
-      // var descricao = JSON.parse(sessionStorage.PONTOS).find(item => item.id == idAquario).descricao;
-      tituloPontos.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
-    }
-
-    function exibirPontos() {
-        let todosOsPontos = JSON.parse(sessionStorage.PONTOS);
-
-        for (i = 0; i < todosOsPontos.length; i++) {
-            // exibindo - ou não - o gráfico
-            //  if (todosOsPontos[i].id != idAquario) {
-                let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
-                if (elementoAtual.classList.contains("display-block")) {
-                  elementoAtual.classList.remove("display-block")
-                }
-                elementoAtual.classList.add("display-none")
-
-                // alterando estilo do botão
-                let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
-                if (btnAtual.classList.contains("btn-pink")) {
-                  btnAtual.classList.remove("btn-pink")
-                }
-                btnAtual.classList.add("btn-white")
-                //    }
-              }
-              
-              // exibindo - ou não - o gráfico
-              let graficoExibir = document.getElementById(`grafico${idAquario}`)
-              graficoExibir.classList.remove("display-none")
-              graficoExibir.classList.add("display-block")
-              
-              // alterando estilo do botão
-              let btnExibir = document.getElementById(`btnAquario${idAquario}`)
-              btnExibir.classList.remove("btn-white")
-              btnExibir.classList.add("btn-pink")
+        window.onload = exibirPontosDoUsuario();
+    
+        function exibirPontosDoUsuario() {
+            var pontos = JSON.parse(sessionStorage.PONTOS);
+            pontos.forEach(item => {
+                document.getElementById("myChart").innerHTML += `
+                <button class="btn-chart" onclick="exibirPontos${item.pontos})" id="myChart${item.pontos}"</button>
+                `
+    
+                document.getElementById("myChart").innerHTML += `
+                    <div id="myChart${item.pontos}">
+                        <h3>
+                            <span id="tituloAquario${item.id}">${item.descricao}</span>
+                        </h3>
+                        <div class="dashboardLine">
+                            <canvas id="myChartCanvas${item.id}"></canvas>
+                        </div>
+                        <div class="label-captura">
+                            <p id="avisoCaptura${item.id}" style="color: white"></p>
+                        </div>
+                    </div>
+                `
+    
+                obterDadosGrafico(item.id)
+            });
+    
+            if (pontos.length > 0) {
+                exibirPontos(pontos[0].id)
             }
-            
-            
-           */ 
+        }
+    
+        
+        function alterarTitulo() {
+          var tituloPontos = document.getElementById(`tituloPontos`)
+          // var descricao = JSON.parse(sessionStorage.PONTOS).find(item => item.id == idAquario).descricao;
+          tituloPontos.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
+        }
+    
+        function exibirPontos() {
+            let todosOsPontos = JSON.parse(sessionStorage.PONTOS);
+    
+            for (i = 0; i < todosOsPontos.length; i++) {
+                // exibindo - ou não - o gráfico
+                //  if (todosOsPontos[i].id != idAquario) {
+                    let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
+                    if (elementoAtual.classList.contains("display-block")) {
+                      elementoAtual.classList.remove("display-block")
+                    }
+                    elementoAtual.classList.add("display-none")
+    
+                    // alterando estilo do botão
+                    let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
+                    if (btnAtual.classList.contains("btn-pink")) {
+                      btnAtual.classList.remove("btn-pink")
+                    }
+                    btnAtual.classList.add("btn-white")
+                    //    }
+                  }
+                  
+                  // exibindo - ou não - o gráfico
+                  let graficoExibir = document.getElementById(`grafico${idAquario}`)
+                  graficoExibir.classList.remove("display-none")
+                  graficoExibir.classList.add("display-block")
+                  
+                  // alterando estilo do botão
+                  let btnExibir = document.getElementById(`btnAquario${idAquario}`)
+                  btnExibir.classList.remove("btn-white")
+                  btnExibir.classList.add("btn-pink")
+                }
+                
+                
+               */
 
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
@@ -155,15 +156,38 @@
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function obterDadosGrafico() {
 
-       
 
-        fetch(`/dashboard/dashboard`, { cache: 'no-store' }).then(function (response) {
+
+        fetch(`/dashboardR/dashboard`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
                     plotarGrafico(resposta);
+                    plotarGrafico2(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+
+
+   /* function obterDadosKpi() {
+
+        fetch(`/dashboardR/dashboard`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarKpiMaior(resposta);
+                    plotarKpiMedia(resposta);
 
                 });
             } else {
@@ -174,6 +198,7 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
+*/
 
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
@@ -191,29 +216,16 @@
             datasets: [{
                 label: 'Pontuação',
                 data: [],
-                fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1
             },
-            {
-                label: 'Quantidade',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(199, 52, 52)',
-                tension: 0.1
-            }]
+            ]
         };
 
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
-
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var pontos = resposta[i];
             labels.push(pontos.momento_grafico);
             dados.datasets[0].data.push(pontos.pontuação);
-            dados.datasets[1].data.push(pontos.quantidade);
         }
 
         console.log('----------------------------------------------')
@@ -224,21 +236,62 @@
         console.log(dados.datasets)
         console.log('----------------------------------------------')
 
-        // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'line',
             data: dados,
         };
 
-        // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`myChartCanvas`),
+            document.getElementById('myChart'),
             config
         );
-
-        setTimeout(() => atualizarGrafico(pontos, myChart), 2000);
     }
+    function plotarGrafico2(resposta) {
 
+        let labels = [];
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Quantidade',
+                data: [],
+                borderColor: 'rgb(199, 52, 52)',
+                tension: 0.1
+            }]
+        };
+
+        for (i = 0; i < resposta.length; i++) {
+            var pontos = resposta[i];
+            labels.push(pontos.momento_grafico);
+            dados.datasets[0].data.push(pontos.quantidade);
+        }
+
+        const config = {
+            type: 'bar',
+            data: dados,
+        };
+
+        let myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config
+        );
+    }
+/*
+    let maiorPontuacao = 0;
+    function plotarKpiMaior(resposta) {
+        let labels = [];
+        for (i = 0; i < resposta.length; i++) {
+            if (maiorPontuacao > resposta[i - 1]) {
+                let maiorPontuacao = resposta[i];
+            }
+            labels.push(pontos.pontos_maximo);
+            dados.datasets[0].data.push(pontos.pontos_maximo);
+
+            div_mensagem.innerHTML = `${maiorPontuacao}`
+            let plotarKpiMaior = document.getElementById('plotarKpiMaior');
+        }
+    }
+*/
 
     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
     // buscando a última medida inserida em tabela contendo as capturas, 
@@ -278,7 +331,7 @@
                         dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
                         dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].umidade ); // incluir uma nova medida de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
 
                         dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
                         dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura

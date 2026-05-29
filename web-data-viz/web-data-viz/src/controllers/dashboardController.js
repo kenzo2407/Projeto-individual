@@ -1,4 +1,5 @@
 var dashboardModel = require("../models/dashboardModel");
+var aquarioModel = require("../models/aquarioModel");
 
 function dashboard(req, res) {
    /* var pontos = req.body.pontosServidor;
@@ -6,7 +7,7 @@ function dashboard(req, res) {
 
 
 
-    usuarioModel.dashboard()
+    dashboardModel.dashboard()
         .then(
             function (resultadoDashboard) {
                 res.json(resultadoDashboard);

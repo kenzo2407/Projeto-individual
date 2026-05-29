@@ -1,9 +1,9 @@
 var express = require("express");
 var router = express.Router();
-var usuarioController = require("../controllers/usuarioController");
+var quizController = require("../controllers/quizController");
 
 router.post("/quiz", function (req, res) {
-    usuarioController.quiz(req, res);
+    quizController.quiz(req, res);
 });
 
 module.exports = router;

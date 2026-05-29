@@ -1,8 +1,9 @@
 var quizModel = require("../models/quizModel");
+var aquarioModel = require("../models/aquarioModel");
 
 function quiz(req, res) {
     var pontos = req.body.pontosServidor;
-    var fkUsuario = req.body.idUsuario;
+    var fkUsuario = req.body.fkUsuario;
 
 
     if (pontos == undefined) {
