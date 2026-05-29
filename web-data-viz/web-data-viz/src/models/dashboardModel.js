@@ -12,11 +12,21 @@ function dashboard(){
     GROUP BY momento_grafico, pontos
     ORDER BY momento_grafico DESC;
 `;
-   
+    return database.executar(instrucaoSql);
+}
+
+function kpi(){
+    var instrucaoSql = `
+        SELECT
+            MAX(pontos) AS maiorPontuacao,
+            AVG(pontos) AS mediaPontuacao
+        FROM quiz
+        WHERE dataR IS NOT NULL;
+    `;
     return database.executar(instrucaoSql);
 }
 
 module.exports = {
-    
+    kpi,
     dashboard,
 };

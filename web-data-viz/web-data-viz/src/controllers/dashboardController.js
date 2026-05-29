@@ -24,6 +24,25 @@ function dashboard(req, res) {
         );
 }
 
+function kpi(req, res) {
+    dashboardModel.kpi()
+        .then(
+            function (resultadoKpi) {
+                res.json(resultadoKpi);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao buscar os KPIs! Erro:",
+                    erro.sqlMessage
+                );
+                res.status(600).json(erro.sqlMessage)
+            }
+        );
+}
+
 module.exports = {
     dashboard,
+    kpi,
 }

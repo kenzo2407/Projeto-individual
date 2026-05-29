@@ -174,21 +174,16 @@
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
-    }
-
-
-
-   /* function obterDadosKpi() {
-
-        fetch(`/dashboardR/dashboard`, { cache: 'no-store' }).then(function (response) {
+            
+            
+            fetch(`/dashboardR/kpi`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
-
-                    plotarKpiMaior(resposta);
-                    plotarKpiMedia(resposta);
-
+                    
+                     plotarKpiMaior(resposta);
+                     plotarKpiMedia(resposta);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -197,13 +192,14 @@
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
-    }
-*/
+            
+        }
 
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta) {
+            
+            // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+            // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+            // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+            function plotarGrafico(resposta) {
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -276,22 +272,17 @@
             config
         );
     }
-/*
-    let maiorPontuacao = 0;
-    function plotarKpiMaior(resposta) {
-        let labels = [];
-        for (i = 0; i < resposta.length; i++) {
-            if (maiorPontuacao > resposta[i - 1]) {
-                let maiorPontuacao = resposta[i];
-            }
-            labels.push(pontos.pontos_maximo);
-            dados.datasets[0].data.push(pontos.pontos_maximo);
 
-            div_mensagem.innerHTML = `${maiorPontuacao}`
-            let plotarKpiMaior = document.getElementById('plotarKpiMaior');
-        }
+   
+    function plotarKpiMaior(resposta) {
+        document.getElementById('maiorPontuacao').innerHTML = resposta[0].maiorPontuacao;
     }
-*/
+    
+    function plotarKpiMedia(resposta){
+        document.getElementById('mediaPontuacao').innerHTML = parseFloat(resposta[0].mediaPontuacao).toFixed(1);
+
+    }
+
 
     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
     // buscando a última medida inserida em tabela contendo as capturas, 
