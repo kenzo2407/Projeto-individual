@@ -15,7 +15,8 @@
     <div class="painel">
         <div class="inner_painel">
             <div class="p_painel" style="color: white;">
-                <img src="https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6Im1fNmEwNTMyYzViN2I0ODE5MWE1NTAxNmIyNjY3ZDNjNDI6ZmlsZV8wMDAwMDAwMGY5NTg3MWY1YTY0Y2FjZWQwZmMwOTAyZSIsInRzIjoiMjA1ODciLCJwIjoicHlpIiwiY2lkIjoiMSIsInNpZyI6IjFkNDE5ZjU4MjQ5NmM4YTg2Mzk4N2NiMmRhYzc1ZDNlZDkwYTQ1ZWRlODBkNGUyNjRiM2E0ZmIwNzJkNzM0NzAiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsLCJjcyI6bnVsbCwiY2RuIjpudWxsLCJmbiI6bnVsbCwiY2QiOm51bGwsImNwIjpudWxsLCJtYSI6bnVsbH0=" alt="" height="100px" width="100px">
+                <img src="https://thumbs.dreamstime.com/b/%C3%ADcone-de-peixe-em-fundo-preto-ilustra%C3%A7%C3%A3o-vetorial-estilo-plano-168420947.jpg?w=768"
+                            alt="" height="130px" width="130px">
                 <span>
                     <a href="quiz.html" style="color: white;">Quiz</a>
                 </span>
@@ -72,6 +73,26 @@
             pergunta: "O que pode acontecer em um aquário onde o ciclo de nitrogênio não esteja estabilizado?",
             opcoes:["A água aumenta de temperatura", "O nível de amônia pode aumentar e prejudicar os peixes", "Os peixes crescerão mais rápidos", "O filtro para de funcionar lentamente"],
             correta:1
+            },
+            {
+            pergunta: "Qual dessas práticas ajuda a manter o aquário mais saudável?",
+            opcoes:["Desligar o filtro à noite","Alimentar os peixes várias vezes por hora","Trocar toda a água diariamente", "Trocas parciais de água regularmente"],
+            correta:3
+            },
+            {
+            pergunta: "O que acontece se houver excesso de alimento no aquário?",
+            opcoes:["Os peixes crescem mais rápido", "Nada acontece", "A qualidade da água pode piorar", "A água fica mais limpa"],
+            correta:2
+            },
+            {
+            pergunta: "Qual destes fatores pode causar estresse nos peixes?",
+            opcoes: ["Iluminação correta", "Mudanças bruscas de temperatura", "Alimentação equilibrada", "Água adequada"],
+            correta:1
+            },
+            {
+                pergunta: "O processo que estabelece colônias de bactérias benéficas no aquário é chamado de:",
+                opcoes: ["Ciclagem", "Filtração", "Oxigenação", "Transição"],
+                correta:0
             }
         ];
 
@@ -85,6 +106,8 @@
         bt1.innerHTML= perguntas[Atual].opcoes[1];
         bt2.innerHTML= perguntas[Atual].opcoes[2];
         bt3.innerHTML= perguntas[Atual].opcoes[3];
+      
+        
         
     }
 

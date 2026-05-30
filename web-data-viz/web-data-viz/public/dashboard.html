@@ -15,8 +15,8 @@
             <div class="painel">
                 <div class="inner_painel">
                     <div class="p_painel" style="color: white;">
-                        <img src="https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6Im1fNmEwNTMyYzViN2I0ODE5MWE1NTAxNmIyNjY3ZDNjNDI6ZmlsZV8wMDAwMDAwMGY5NTg3MWY1YTY0Y2FjZWQwZmMwOTAyZSIsInRzIjoiMjA1ODciLCJwIjoicHlpIiwiY2lkIjoiMSIsInNpZyI6IjFkNDE5ZjU4MjQ5NmM4YTg2Mzk4N2NiMmRhYzc1ZDNlZDkwYTQ1ZWRlODBkNGUyNjRiM2E0ZmIwNzJkNzM0NzAiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsLCJjcyI6bnVsbCwiY2RuIjpudWxsLCJmbiI6bnVsbCwiY2QiOm51bGwsImNwIjpudWxsLCJtYSI6bnVsbH0="
-                            alt="" height="100px" width="100px">
+                        <img src="https://thumbs.dreamstime.com/b/%C3%ADcone-de-peixe-em-fundo-preto-ilustra%C3%A7%C3%A3o-vetorial-estilo-plano-168420947.jpg?w=768"
+                            alt="" height="130px" width="130px">
                         <span>
                             <a href="quiz.html" style="color: white;">Quiz</a>
                         </span>
@@ -176,6 +176,8 @@
             });
             
             
+
+
             fetch(`/dashboardR/kpi`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
@@ -184,6 +186,7 @@
                     
                      plotarKpiMaior(resposta);
                      plotarKpiMedia(resposta);
+                      
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -212,7 +215,7 @@
             datasets: [{
                 label: 'Pontuação',
                 data: [],
-                borderColor: 'rgb(75, 192, 192)',
+                borderColor: 'blue',
                 tension: 0.1
             },
             ]
@@ -249,17 +252,17 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Quantidade',
+                label: 'Nível de conhecimento',
                 data: [],
-                borderColor: 'rgb(199, 52, 52)',
+                  backgroundColor: 'navy',
                 tension: 0.1
             }]
         };
 
         for (i = 0; i < resposta.length; i++) {
             var pontos = resposta[i];
-            labels.push(pontos.momento_grafico);
-            dados.datasets[0].data.push(pontos.quantidade);
+            labels.push(pontos.nome);
+            dados.datasets[0].data.push(pontos.conhecimento);
         }
 
         const config = {

@@ -47,8 +47,8 @@ body{
     font-family: 'Codec Pro';
     height: 90%;
     width: 90%;
-    background-color: white;
     border-radius: 10px;
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,12 +57,12 @@ body{
 }
 
 .InputCard{
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: blue;
-border-radius: 10px;
-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 50px;
+    background-color: #00209e;
 width: 300px;
 text-align: center;
 }
@@ -71,7 +71,7 @@ text-align: center;
     display: flex;
     justify-content:center;
     align-items: center;
-    background-color: blue;
+    background-color: #00209e;
     width: 100px;
     height: 50px;
     border-radius: 10px;
