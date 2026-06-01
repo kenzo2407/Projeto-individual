@@ -51,7 +51,7 @@
     
 </body>
 <script>
-
+    // foi usado uma lista onde há json dentro, com objetos como as perguntas, as respostas certas, e as opções
         let perguntas = [
             {
             pergunta: "Qual é a função do termostato?",
@@ -101,7 +101,7 @@
 
     function carregar(){
         div_pergunta.innerHTML=perguntas[Atual].pergunta;
-        
+        // esses btx são as opções que o usuário poderá escolher, como a opção A, nãao são a quantidade de questões
         bt0.innerHTML= perguntas[Atual].opcoes[0];
         bt1.innerHTML= perguntas[Atual].opcoes[1];
         bt2.innerHTML= perguntas[Atual].opcoes[2];
@@ -112,26 +112,28 @@
     }
 
     function questao(escolha){
+        // se escolha for certa, a contagem de pontos aumenta em 1
         if(escolha == perguntas[Atual].correta){
             pontos++;
         }
-        
+        //acertando ou errando a questão, a contagem das perguntas aumentará em 1, o que levará à próxima questão
         Atual++;
         
-        
+        // não poderá ter mais mais contagens de perguntas do que perguntas
         if(Atual < perguntas.length){
             carregar();
         }else {
             div_mensagem.innerHTML=`Fim do quiz! Você acertou ${pontos}`
             
+
+            // aqui o fetch coloca a pontuação do quiz no banco de dados, pela rota quiz, quiz controller e quiz model, usando o insert into quiz
             fetch("/quiz/quiz", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                     body: JSON.stringify({
-                        // crie um atributo que recebe o valor recuperado aqui
-                        // Agora vá para o arquivo routes/usuario.js
+                        // criando parâmetros para guardar a pontuação no banco de dados e o session storage para guardar as informações do usuário dentro do console
                         pontosServidor: pontos,
                         fkUsuario: sessionStorage.ID_USUARIO,
                     }),
@@ -147,15 +149,6 @@
                   });
                 }
             
-            //   setTimeout(() => {
-                //     window.location = "login.html";
-                //   }, "2000");
-                
-                //   limparFormulario();
-                //   finalizarAguardar();
-                // } else {
-                    //   throw "Houve um erro ao tentar realizar o cadastro!";
-        // }
     })
     .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
